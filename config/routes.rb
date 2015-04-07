@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :pool
-  resources :user
-  
+  resources :pools do
+    resources :invitations
+  end
+  resources :users
+
 end
