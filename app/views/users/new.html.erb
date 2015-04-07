@@ -2,6 +2,7 @@
 <% if current_user %>
   <%= "Welcome #{current_user.first_name}" %>
   <%= link_to "Sign out", "/signout"%>
+  <%= link_to "Create Pool", "/createpool"%>
 <%  else %>
   <%= link_to "Sign in with Venmo", "/auth/venmo" %>
 <% end %>

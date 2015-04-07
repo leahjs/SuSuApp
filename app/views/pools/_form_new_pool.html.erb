@@ -1,0 +1,9 @@
+<%= form_tag(:action => 'create') do %>
+    <%= label_tag(:name) %>
+    <%= text_field_tag('pool[name]') %> <br />
+
+    <%= label_tag(:pool_amount) %>
+    <%= text_field_tag('pool[pool_amount]') %> <br />
+    
+    <%= submit_tag("Create Pool") %></td>
+<% end %>
