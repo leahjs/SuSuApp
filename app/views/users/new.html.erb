@@ -1,6 +1,14 @@
 
 <% if current_user %>
   <%= "Welcome #{current_user.first_name}" %>
+  <% unless current_user.pools.empty? %>
+	  <% current_user.pools.each do |pool|%>
+	  	<%= pool.name  %>
+  	<% end %>
+  <% else %>
+  	<%= "You are not apart of any current pools!" %>
+  <% end %>
+
   <%= link_to "Sign out", "/signout"%>
   <%= link_to "Create Pool", "/createpool"%>
 <%  else %>

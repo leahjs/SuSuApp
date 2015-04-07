@@ -9,10 +9,11 @@ class PoolsController < ApplicationController
   end
 
   def create
+
     @pool = current_user.pools.build(pool_params)
-    @pool.save
+    current_user.save
     # binding.pry
-    if @pool.save
+    if current_user.save
       # If save succeeds, redirect to the index action
       flash[:notice] = "Subject created successfully."
       redirect_to pool_path(@pool)
