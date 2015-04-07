@@ -6,6 +6,7 @@
 #
 default: &default
   adapter: postgresql
+  host: localhost
   pool: 5
   encoding: unicode
   timeout: 5000
@@ -22,4 +23,4 @@ test:
   database: susu_test
 
 production:
-  url: <%= ENV["DATABASE_URL"] %> 
+  url: <%= ENV["DATABASE_URL"] %>
