@@ -15,8 +15,8 @@ class PoolsController < ApplicationController
     # binding.pry
     if current_user.save
       # If save succeeds, redirect to the index action
-      flash[:notice] = "Subject created successfully."
       redirect_to pool_path(@pool)
+      flash[:notice] = "Subject created successfully."
     else
       # If save fails, redisplay the form so user can fix problems
       # @subject_count = Subject.count + 1

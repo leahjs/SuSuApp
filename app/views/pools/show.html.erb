@@ -6,6 +6,3 @@
 <% @pool.swimmers.each do |swimmer| %>
   <h3><%= link_to User.find_by(id: swimmer.user_id).first_name, user_path(User.find_by(id: swimmer.user_id)) %></h3>
 <%end%>
-
-
-<%= Invitation.new.guest %> <br>
