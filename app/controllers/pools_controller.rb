@@ -8,6 +8,7 @@ class PoolsController < ApplicationController
   end
 
   def create
+    # binding.pry
 
     @pool = current_user.pools.build(pool_params)
     current_user.save
@@ -37,7 +38,7 @@ class PoolsController < ApplicationController
   private
 
   def pool_params
-   params.require(:pool).permit(:name, :pool_amount)
+   params.require(:pool).permit(:name, :pool_amount, :invitations => [:guest])
   end
 
 end

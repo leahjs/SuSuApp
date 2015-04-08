@@ -1,12 +1,21 @@
-<%= form_tag(:action => 'create') do %>
-    <%= label_tag(:name) %>
-    <%= text_field_tag('pool[name]') %> <br />
+<%= form_for(:pool, :url => { :action => :create }) do |f| %>
+ <div class="field">
+   <%= f.label(:name) %>
+   <%= f.text_field :name%><br/>
+   <%= f.label :pool_amount %>
+   <%= f.text_field :pool_amount %>
+ </div>
 
-    <%= label_tag(:pool_amount) %>
-    <%= text_field_tag('pool[pool_amount]') %> <br />
 
-    <%= label_tag(:invite) %>
-    <%= text_field_tag('invitaion[guest]') %> <br />
-    
-    <%= submit_tag("Create Pool") %></td>
+   <%= f.fields_for :invitations do |invite_form| %>
+	  <%= invite_form.label :invite %>
+	  <%= invite_form.text_field :invite %>
+   <% end %>
+
+
+
+
+ <div class="actions">
+   <%= f.submit "Create Pool" %>
+ </div>
 <% end %>
