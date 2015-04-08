@@ -1,14 +1,11 @@
-<h1>Invitations#new</h1>
-<p>Find me in app/views/invitations/new.html.erb</p>
 
-<%= form_for(:invitation, :url => { :action => 'create' }) do |f| %>
+<%= form_for(:invitation, :url => "/invitations/create", :html => {:method => :post}) do |f| %>
  <div class="field">
-   <%= f.label(:email) %>
-   <%= f.text_field(:email) %><br/>
+   <%= f.label(:guest) %>
+   <%= f.text_field :guest%><br/>
  </div>
 
-
  <div class="actions">
-   <%= f.submit ("Create Invitation") %>
+   <%= f.submit "Invite User" %>
  </div>
 <% end %>
