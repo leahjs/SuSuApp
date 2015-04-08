@@ -1,0 +1,6 @@
+<h1><%= @user.first_name %></h1>
+<% unless @user.credibility.nil? %>
+ <h2><%= @user.credibility %></h2>
+<% else %>
+  <h2><%= @user.first_name %> doesn't have credibilty yet.</h2>
+<% end %>
