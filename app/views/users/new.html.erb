@@ -1,12 +1,16 @@
+<% if !current_user %>
+  <div class="welcome"><h1>Welcome to the Susu App!</h1></div>
+    <% end %>
 
 <% if current_user %>
-  <h1><%= "Welcome, #{current_user.first_name}!" %></h1><br/>
+  <h3><%= "Welcome, #{current_user.first_name}!" %></h3>
+  <div class="signout_button"><%= link_to "Sign out", "/signout"%></div><br/>
   <% unless current_user.pools.empty? %>
-	  <% current_user.pools.each do |pool|%>
-	  	<h3><%=link_to pool.name, pool_path(pool) %></h3><br/>
-  	<% end %>
+    <% current_user.pools.each do |pool|%>
+      <h3><%=link_to pool.name, pool_path(pool) %></h3><br/>
+    <% end %>
   <% else %>
-  	<%= "You are not apart of any current pools!" %>
+    <%= "You are not apart of any current pools!" %>
   <% end %>
 
   <% if current_user.invitations.any? %>
@@ -17,8 +21,9 @@
     <h3>You don't have any current invitations.</h3>
   <%end%>
 
-  <%= link_to "Sign out", "/signout"%>
   <%= link_to "Create Pool", "/createpool"%>
+
 <%  else %>
-  <%= link_to "Sign in with Venmo", "/auth/venmo" %>
+  <div class="venmo_button"><%= link_to "Sign in with Venmo", "/auth/venmo" %>
+  </div>
 <% end %>
