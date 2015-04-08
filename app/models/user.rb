@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_many :swimmers
   has_many :pools, through: :swimmers
-  has_many :invitations
+  has_many :invitations, foriegn_key: :guest_id
 
 
   def self.create_with_omniauth(auth)
