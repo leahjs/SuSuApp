@@ -6,3 +6,16 @@
 <% @pool.swimmers.each do |swimmer| %>
   <h3><%= link_to User.find_by(id: swimmer.user_id).first_name, user_path(User.find_by(id: swimmer.user_id)) %></h3>
 <%end%>
+
+
+<%= form_for(@pool.invitations.build, :url => "/invitations/create", :html => {:method => :post}) do |f| %>
+ <div class="field">
+   <%= f.label(:guest) %>
+   <%= f.text_field :guest%><br/>
+   <%= hidden_field_tag("invitation[pool_id]", value = @pool.id) %>
+ </div>
+
+ <div class="actions">
+   <%= f.submit "Invite User" %>
+ </div>
+<% end %>

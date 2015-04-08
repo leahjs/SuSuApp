@@ -8,14 +8,6 @@
    <%= f.text_field :member_limit %><br/>
  </div>
 
- <h4>Don't forget to invite a friend!</h4>
-   <%= f.fields_for :invitations do |invite_form| %>
-	  <%= invite_form.label :invite %>
-	  <%= invite_form.text_field :invite %>
-   <% end %>
-
-
-
 
  <div class="actions">
    <%= f.submit "Create Pool" %>
