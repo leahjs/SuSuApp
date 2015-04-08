@@ -4,7 +4,7 @@ class PoolsController < ApplicationController
   end
 
   def new
-    
+
   end
 
   def create
@@ -38,7 +38,7 @@ class PoolsController < ApplicationController
   private
 
   def pool_params
-   params.require(:pool).permit(:name, :pool_amount, :invitations => [:guest])
+   params.require(:pool).permit(:name, :pool_amount, :member_limit, :invitations => [:guest])
   end
 
 end

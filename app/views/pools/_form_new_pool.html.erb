@@ -3,10 +3,12 @@
    <%= f.label(:name) %>
    <%= f.text_field :name%><br/>
    <%= f.label :pool_amount %>
-   <%= f.text_field :pool_amount %>
+   <%= f.text_field :pool_amount %><br/>
+   <%= f.label :member_limit %>
+   <%= f.text_field :member_limit %><br/>
  </div>
 
-
+ <h4>Don't forget to invite a friend!</h4>
    <%= f.fields_for :invitations do |invite_form| %>
 	  <%= invite_form.label :invite %>
 	  <%= invite_form.text_field :invite %>
