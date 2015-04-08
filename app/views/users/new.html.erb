@@ -1,9 +1,9 @@
 
 <% if current_user %>
-  <%= "Welcome #{current_user.first_name}" %><br/>
+  <h1><%= "Welcome, #{current_user.first_name}!" %></h1><br/>
   <% unless current_user.pools.empty? %>
 	  <% current_user.pools.each do |pool|%>
-	  	<%=link_to pool.name, pool_path(pool) %><br/>
+	  	<h3><%=link_to pool.name, pool_path(pool) %></h3><br/>
   	<% end %>
   <% else %>
   	<%= "You are not apart of any current pools!" %>

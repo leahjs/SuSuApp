@@ -20,6 +20,7 @@ class InvitationsController < ApplicationController
       # If save fails, redisplay the form so user can fix problems
       # @subject_count = Subject.count + 1
       render('new')
+    end
   end
 
   def destroy

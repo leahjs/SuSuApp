@@ -4,8 +4,7 @@ class PoolsController < ApplicationController
   end
 
   def new
-    # @pool = current_user.pools.build
-    # @pool.save
+    
   end
 
   def create

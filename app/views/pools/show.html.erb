@@ -1,8 +1,11 @@
-<h1>Pools#show</h1>
-<p>Find me in app/views/pools/show.html.erb</p>
-<%= @pool.name %> <br> <br>
+<h1><%= @pool.name %></h1><br> <br>
 
-<%= @pool.pool_amount %> <br>
+<h2>$<%= @pool.pool_amount %></h2> <br>
+
+<h2>Swimmers:</h2><br/>
+<% @pool.swimmers.each do |swimmer| %>
+  <h3><%= link_to User.find_by(id: swimmer.user_id).first_name, user_path(User.find_by(id: swimmer.user_id)) %></h3>
+<%end%>
+
 
 <%= Invitation.new.guest %> <br>
-<p> Invitation Sent to <%= "#{Invitation.new.guest}" %> !</p>
