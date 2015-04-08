@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'invitations/index'
 
   get 'invitations/new'
