@@ -16,7 +16,7 @@
     <%= "You are not apart of any current pools!" %>
   <% end %>
 
-  <% if current_user.invitations.any? %>
+  <% if current_user.invitations.any?%>
     <% current_user.invitations.each do |invitation| %>
 
     <h3>You have been invited to <%= link_to invitation.pool.name, pool_path(invitation.pool) %></h3>

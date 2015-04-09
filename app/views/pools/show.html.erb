@@ -2,6 +2,7 @@
 <div class="signout_button"><%= link_to "Sign out", "/signout"%></div><br/>
 
 <h4>Pool Amount: $<%= @pool.pool_amount %></h4>
+<h5><%= @pool.lifeguard.first_name %> is the lifeguard for this pool.</h5>
 
 <h3>Swimmers:</h3>
 <% @pool.swimmers.each do |swimmer| %>
@@ -9,6 +10,7 @@
 <%end%><br>
 
 
+<% if current_user.id == @pool.lifeguard_id %>
 <%= form_for(@pool.invitations.build, :url => "/invitations/create", :html => {:method => :post}) do |f| %>
  <div class="field">
    <%= f.label(:guest) %>
@@ -20,5 +22,10 @@
    <%= f.submit "Invite User" %>
  </div>
 <% end %>
+<%elsif @pool.swimmers.ids.include?(current_user.id)%>
+  <h5>Welcome back <%=current_user.first_name%>!</h5>
+<%else%>
+  <h5>Accept Invitation!</h5>
+<%end%>
 
   <div class="home_button"><%= link_to "My Profile", "/profile"%></div><br/>
