@@ -8,8 +8,25 @@
   <%= analytics_init if Rails.env.production? %>
 </head>
 <body>
+  <div id="nav-bar">
+      <div class="title"><a>SuSu</a>  </div>
+      <div class="sign-in-out">
+        <% if current_user %>
+          <a><%= link_to "Sign In", "/auth/venmo" %> <b>|</b></a>
+          <a> <%= link_to "Sign out", "/signout"%> </a>
+        <% else %>
+          <a><%= link_to "Sign In", "/auth/venmo" %> <b>|</b></a>
+          <a><%= link_to "Sign Up", "/" %></a>
+        <% end %>
 
-<%= yield %>
+      </div>
+  </div>
+  <div class="style-bar"></div>
+
+
+  <div id="main-content">
+    <%= yield %>
+  </div>
 
 </body>
 </html>

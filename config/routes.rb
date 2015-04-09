@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'main/home'
+
   get 'invitations/index'
 
   get 'invitations/new'
@@ -27,8 +29,9 @@ Rails.application.routes.draw do
   end
   resources :users
 
-  root to: "users#new"
+  root to: "main#home"
   get "/auth/venmo/callback" => "sessions#create"
   get "/signout" => "sessions#destroy", :as => :signout
   get "/createpool" => "pools#new", :as => :createpool
+  get "/profile" => "users#new", :as => :profile
 end
