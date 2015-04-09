@@ -21,7 +21,61 @@
 @import "bootstrap";
 /* Some Style from the Bootstrap Default Theme */
 
+/* unvisited link */
+  // a:link {text-decoration: none;}
+/* visited link */
+  a:visited { color: #888; }
+/* mouse over link */
+  a:hover { color: #fff; }
+/* selected link */
+  a:active { color: #888;}
 
+body {
+  padding: 0;
+  margin: 0;
+  background:#f8f8f8;
+}
+#nav-bar {
+  // border: 1px solid blue;
+  height: 35px;
+  width:100%;
+  background: #202020;
+}
+
+.sign-in-out {
+  // background: #202020;
+  float:right;
+  width: 200px;
+  // border:1px solid white;
+  margin: 10px 50px;
+  display:inline-block;
+  font-size: 14px;
+}
+
+.sign-in-out a:hover{ color:#fff; }
+.sign-in-out a { color: #888; text-transform:lowercase; text-decoration:none;}
+.sign-in-out a:link { color: #888;}
+
+.title a { color: #888; }
+
+.title {
+  color: #fff;
+  display:inline-block;
+  // border:1px solid white;
+  margin: 2px 50px;
+  font-size: 26px;
+}
+.style-bar{
+  background:#404040;
+  height: 5px;
+  width:100%;
+}
+// #main-content {
+//   margin:50px auto;
+//   height:500px;
+//   border:1px solid blue;
+//   background:white;
+// }
 .theme-dropdown .dropdown-menu {
   position: static;
   display: block;
@@ -31,4 +85,3 @@
 .theme-showcase > p > .btn {
   margin: 5px 0;
 }
-
