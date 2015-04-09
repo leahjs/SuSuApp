@@ -6,6 +6,7 @@
 <% if current_user %>
   <h3><%= "Welcome, #{current_user.first_name}!" %></h3>
   <div class="signout_button"><%= link_to "Sign out", "/signout"%></div><br/>
+  <h3>My Pool(s)</h3>
   <% unless current_user.pools.empty? %>
     <% current_user.pools.each do |pool|%>
       <h3><%=link_to pool.name, pool_path(pool) %></h3><br/>
@@ -22,7 +23,7 @@
     <h3>You don't have any current invitations.</h3>
   <%end%>
 
-  <%= link_to "Create Pool", "/createpool"%>
+  <h4><%= link_to "Create Pool", "/createpool"%></h4>
 
 <%  else %>
   <div class="venmo_button"><%= link_to "Sign in with Venmo", "/auth/venmo" %>
