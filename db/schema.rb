@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150409200518) do
+ActiveRecord::Schema.define(version: 20150409211725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,10 +32,10 @@ ActiveRecord::Schema.define(version: 20150409200518) do
     t.integer  "life_raft"
     t.integer  "cycle"
     t.integer  "member_limit"
-    t.string   "status"
+    t.string   "status",       default: "open"
     t.integer  "reciever"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.integer  "lifeguard_id"
   end
 
