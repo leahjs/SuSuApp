@@ -1,12 +1,12 @@
-<h2><%= @pool.name %></h2><br> <br>
+<h2><%= @pool.name %></h2>
 <div class="signout_button"><%= link_to "Sign out", "/signout"%></div><br/>
 
-<h2>$<%= @pool.pool_amount %></h2> <br>
+<h4>Pool Amount: $<%= @pool.pool_amount %></h4>
 
-<h2>Swimmers:</h2><br/>
+<h3>Swimmers:</h3>
 <% @pool.swimmers.each do |swimmer| %>
-  <h2><%= link_to User.find_by(id: swimmer.user_id).first_name, user_path(User.find_by(id: swimmer.user_id)) %></h2>
-<%end%>
+  <h4><%= link_to User.find_by(id: swimmer.user_id).first_name, user_path(User.find_by(id: swimmer.user_id)) %></h4>
+<%end%><br>
 
 
 <%= form_for(@pool.invitations.build, :url => "/invitations/create", :html => {:method => :post}) do |f| %>
@@ -21,4 +21,4 @@
  </div>
 <% end %>
 
-  <div class="home_button"><%= link_to "My main page", "/"%></div><br/>
+  <div class="home_button"><%= link_to "My Profile", "/profile"%></div><br/>
