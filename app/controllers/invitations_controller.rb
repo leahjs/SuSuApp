@@ -9,6 +9,7 @@ class InvitationsController < ApplicationController
   def create
     # binding.pry
     @user = User.find_or_create_by(email: invitation_params[:guest])
+
     # binding.pry
     @pool = Pool.find_by(id: invitation_params[:pool_id ])
     @pool.invitations.build(guest_id: @user.id)
@@ -32,6 +33,15 @@ class InvitationsController < ApplicationController
       # @subject_count = Subject.count + 1
       # render('new')
     # end
+  end
+
+  def accept_invitation_path
+    binding.pry
+
+  end
+
+  def decline_invitation_path
+    
   end
 
   def destroy
