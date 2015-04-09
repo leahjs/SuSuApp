@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
+
   get 'invitations/index'
 
   get 'invitations/new'
 
   get 'invitations/create'
+  post 'invitations/create'
 
   get 'invitations/destroy'
 
