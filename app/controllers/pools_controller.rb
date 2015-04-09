@@ -10,8 +10,9 @@ class PoolsController < ApplicationController
   def create
     @pool = current_user.pools.build(pool_params)
     if current_user.save
-      flash[:notice] = "Subject created successfully."
+      # If save succeeds, redirect to the index action
       redirect_to pool_path(@pool)
+      flash[:notice] = "Subject created successfully."
     else
       render('new')
     end

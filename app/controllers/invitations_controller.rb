@@ -16,7 +16,7 @@ class InvitationsController < ApplicationController
     # params[:invitation]
 
 
-    binding.pry
+    # binding.pry
     # @invitation = current_user.pools.build(pool_params)
 
     # current_user.save
