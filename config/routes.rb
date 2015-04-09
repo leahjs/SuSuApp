@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get 'invitations/create'
   post 'invitations/create'
 
+
+
   get 'invitations/destroy'
 
   get 'invitations/edit'
