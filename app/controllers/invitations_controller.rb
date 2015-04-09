@@ -13,6 +13,8 @@ class InvitationsController < ApplicationController
     @pool = Pool.find_by(id: invitation_params[:pool_id ])
     @pool.invitations.build(guest_id: @user.id)
     @pool.save
+    flash[:notice] = "Invitation Sent!"
+     redirect_to new_user_path
     # params[:invitation]
 
 

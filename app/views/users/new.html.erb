@@ -6,6 +6,7 @@
 <% if current_user %>
   <h3><%= "Welcome, #{current_user.first_name}!" %></h3>
   <div class="signout_button"><%= link_to "Sign out", "/signout"%></div><br/>
+  <h3><%= notice %></h3><br>
   <h3>My Pool(s)</h3>
   <% unless current_user.pools.empty? %>
     <% current_user.pools.each do |pool|%>
