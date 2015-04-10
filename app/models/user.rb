@@ -3,6 +3,11 @@ class User < ActiveRecord::Base
   has_many :pools, through: :swimmers
   has_many :invitations, foreign_key: 'guest_id'
 
+  def self.create_and_send_email(email)
+    @user = User.create(:email => email)
+    UserMailer.welcome_email(@user).deliver
+    @user
+  end
 
   def self.create_with_omniauth(auth)
     create! do |user|
