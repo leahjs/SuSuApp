@@ -12,10 +12,10 @@
       <div class="title"><a>SuSu</a>  </div>
       <div class="sign-in-out">
         <% if current_user %>
-          <a><%= link_to "Sign In", "/auth/venmo" %> <b>|</b></a>
+          <a><%= link_to "Sign In", "/auth/twitter" %> <b>|</b></a>
           <a> <%= link_to "Sign out", "/signout"%> </a>
         <% else %>
-          <a><%= link_to "Sign In", "/auth/venmo" %> <b>|</b></a>
+          <a><%= link_to "Sign In", "/auth/twitter" %> <b>|</b></a>
           <a><%= link_to "Sign Up", "/" %></a>
         <% end %>
       </div>

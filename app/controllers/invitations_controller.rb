@@ -15,16 +15,22 @@ class InvitationsController < ApplicationController
      redirect_to new_user_path
   end
 
-  def accept_invitation
+  def accept
     binding.pry
+    @pool = Pool.find_by(id: pool_id)
+    invitation = Invitation.find()
+    invitation.update(confirmation_status: 'accepted')
+    Swimmers.create(pool_id: )
+    redirect_to
   end
 
-  def decline_invitation
-
+  def decline
+    invitation = Invitation.find()
+    invitation.update(confirmation_status: 'declined')
   end
 
   def destroy
-    
+
   end
 
   def edit

@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   get 'invitations/create'
   post 'invitations/create'
 
+  get 'invitations/accept'
 
+  get 'invitations/decline'
 
   get 'invitations/destroy'
 
@@ -33,7 +35,7 @@ Rails.application.routes.draw do
   resources :users
 
   root to: "main#home"
-  get "/auth/venmo/callback" => "sessions#create"
+  get "/auth/twitter/callback" => "sessions#create"
   get "/signout" => "sessions#destroy", :as => :signout
   get "/createpool" => "pools#new", :as => :createpool
   get "/profile" => "users#new", :as => :profile
