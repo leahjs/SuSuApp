@@ -35,5 +35,5 @@
   <%= link_to "Accept Invitation", invitations_accept_path(pool_id:@pool.id, invitation_id: params['invitation_id']) %>
   <%= link_to "Decline Invitation", invitations_decline_path(pool_id: @pool.id, invitation_id: params['invitation_id']) %>
 <%end%>
-
+      <%= notice %>
   <div class="home_button"><%= link_to "My Profile", "/profile"%></div><br/>
