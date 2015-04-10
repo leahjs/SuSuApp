@@ -9,7 +9,7 @@ class InvitationsController < ApplicationController
   def create
     email = invitation_params[:guest]
     @user = User.find_by(email: email)
-    if @user.nil? 
+    if @user.nil?
       @user = User.create_and_send_email(email)
     end
     @pool = Pool.find_by(id: invitation_params[:pool_id ])
@@ -20,17 +20,19 @@ class InvitationsController < ApplicationController
   end
 
   def accept
-    binding.pry
-    @pool = Pool.find_by(id: pool_id)
-    invitation = Invitation.find()
+    @pool = Pool.find_by(id: params['pool_id'])
+    invitation = Invitation.find(params['invitation_id'])
     invitation.update(confirmation_status: 'accepted')
-    Swimmers.create(pool_id: )
-    redirect_to
+    Swimmer.create(pool_id: @pool.id, user_id: current_user.id )
+    flash[:notice] = "Invitation accepted"
+    redirect_to pool_path(@pool)
   end
 
   def decline
-    invitation = Invitation.find()
+    invitation = Invitation.find(params['invitation_id'])
     invitation.update(confirmation_status: 'declined')
+    flash[:notice] = "Invitation declined"
+    redirect_to profile_path
   end
 
   def destroy
