@@ -17,8 +17,8 @@ class Pool < ActiveRecord::Base
       start_date = self.start_date
       lifeguard_goes_last.each do |swimmer|
         swimmer.update(:payday_date => start_date)
+        "#{swimmer.first_name} gets paid #{start_date}" 
         start_date += 7
-      "#{swimmer.first_name} gets paid #{start_date}" 
       end
     end
   end
