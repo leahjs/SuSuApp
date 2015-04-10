@@ -12,13 +12,19 @@ class PoolsController < ApplicationController
     @pool.lifeguard_id = current_user.id
     if current_user.save
       redirect_to pool_path(@pool)
-      flash[:notice] = "Subject created successfully."
     else
       render('new')
     end
   end
 
   def edit
+  end
+
+  def start_pool
+    @pool = Pool.find(params["format"])
+    @pool.update(start_date: Date.today)
+    redirect_to "/profile"
+    flash[:notice] = "Pool Started"
   end
 
   def show

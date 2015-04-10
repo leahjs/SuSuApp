@@ -19,6 +19,7 @@ class InvitationsController < ApplicationController
     redirect_to new_user_path
   end
 
+
   def accept
     @pool = Pool.find_by(id: params['pool_id'])
     invitation = Invitation.find(params['invitation_id'])

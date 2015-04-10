@@ -11,16 +11,23 @@
 
 
 <% if current_user.id == @pool.lifeguard_id %>
-<%= form_for(@pool.invitations.build, :url => "/invitations/create", :html => {:method => :post}) do |f| %>
- <div class="field">
-   <%= f.label(:guest) %>
-   <%= f.text_field :guest%><br/>
-   <%= hidden_field_tag("invitation[pool_id]", value = @pool.id) %>
- </div>
+  <%= form_for(@pool.invitations.build, :url => "/invitations/create", :html => {:method => :post}) do |f| %>
+   <div class="field">
+     <%= f.label(:guest) %>
+     <%= f.text_field :guest%><br/>
+     <%= hidden_field_tag("invitation[pool_id]", value = @pool.id) %>
+   </div>
 
- <div class="actions">
-   <%= f.submit "Invite User" %>
- </div>
+   <div class="actions">
+     <%= f.submit "Invite User" %>
+   </div><br>
+    <% if @pool.start_date.nil? %>
+      <%= link_to "Start Pool", pools_start_pool_path(@pool) %>
+      <%= notice %>
+    <% else %>
+      <h4>Pool started <%=@pool.start_date %></h4>
+    <% end %>
+
 <% end %>
 <%elsif @pool.swimmers.include?(current_user.id)%>
   <h5>Welcome back <%=current_user.first_name%>!</h5>
