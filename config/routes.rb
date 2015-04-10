@@ -27,6 +27,8 @@ Rails.application.routes.draw do
 
   get 'pools/destroy'
 
+  get 'pools/start_pool' 
+
   # post 'pools#new', to: "pools#create"
 
   resources :pools do
