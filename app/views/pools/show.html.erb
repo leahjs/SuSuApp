@@ -29,7 +29,7 @@
     <% end %>
 
 <% end %>
-<%elsif @pool.swimmers.include?(current_user.id)%>
+<%elsif @pool.swimmers.ids.include?(current_user.id)%>
   <h5>Welcome back <%=current_user.first_name%>!</h5>
 <%else%>
   <%= link_to "Accept Invitation", invitations_accept_path(pool_id:@pool.id, invitation_id: params['invitation_id']) %>
