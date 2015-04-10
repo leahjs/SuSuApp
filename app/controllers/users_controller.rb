@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
 	def new
-	
+		if current_user
+			@open_invitations ||= current_user.invitations.where(confirmation_status: 'pending')
+		end
 	end
 
 	def show
