@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   resources :users
 
   root to: "main#home"
-  get "/auth/venmo/callback" => "sessions#create"
+  get "/auth/splitwise/callback", to:  "sessions#create"
   get "/signout" => "sessions#destroy", :as => :signout
   get "/createpool" => "pools#new", :as => :createpool
   get "/profile" => "users#new", :as => :profile
