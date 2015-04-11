@@ -36,9 +36,10 @@ Rails.application.routes.draw do
   end
   resources :users
 
-  root to: "main#home"
+  root to: "users#new"
 
   get "/auth/splitwise/callback", to:  "sessions#create"
+
   get "/signout" => "sessions#destroy", :as => :signout
   get "/createpool" => "pools#new", :as => :createpool
   get "/profile" => "users#new", :as => :profile
