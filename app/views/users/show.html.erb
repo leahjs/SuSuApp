@@ -2,8 +2,8 @@
 <% unless @user.credibility.nil? %>
  <h2><%= @user.credibility %></h2>
 <% else %>
+  <%= image_tag @user.profile_photo %>
   <h2><%= @user.first_name %> doesn't have credibilty yet.</h2>
 <% end %>
 <div class="signout_button"><%= link_to "Sign out", "/signout"%></div><br/>
   <div class="home_button"><%= link_to "My main page", "/profile"%></div><br/>
-

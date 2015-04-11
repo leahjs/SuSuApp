@@ -22,7 +22,7 @@ class PoolsController < ApplicationController
 
   def start_pool
     @pool = Pool.find(params["format"])
-    @pool.update(start_date: Date.today)
+    @pool.update(start_date: Date.today, status: "In Progress")
     redirect_to "/profile"
     flash[:notice] = "Pool Started"
   end

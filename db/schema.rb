@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150410170757) do
+ActiveRecord::Schema.define(version: 20150411212920) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,9 +43,10 @@ ActiveRecord::Schema.define(version: 20150410170757) do
   create_table "swimmers", force: :cascade do |t|
     t.integer  "pool_id"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.datetime "payday_date"
+    t.boolean  "recieved",    default: true
   end
 
   add_index "swimmers", ["pool_id"], name: "index_swimmers_on_pool_id", using: :btree
@@ -54,10 +55,10 @@ ActiveRecord::Schema.define(version: 20150410170757) do
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
-    t.integer  "credibility"
+    t.integer  "credibility",   default: 500
     t.string   "email"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.string   "provider"
     t.string   "uid"
     t.string   "profile_photo"
