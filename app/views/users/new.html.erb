@@ -5,6 +5,7 @@
 
 <% if current_user %>
   <h3><%= "Welcome, #{current_user.first_name}!" %></h3>
+  <%= image_tag current_user.profile_photo %>
   <div class="signout_button"><%= link_to "Sign out", "/signout"%></div><br/>
   <h3><%= notice %></h3><br>
   <h3>My Pool(s)</h3>
