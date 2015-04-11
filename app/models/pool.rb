@@ -19,9 +19,7 @@ class Pool < ActiveRecord::Base
   end
 
   def set_reciever
-    self.swimmers.each do ||
-
-    end
+    self.swimmers.where(recieved: false)
   end
 
   def lifeguard_goes_last

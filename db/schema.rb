@@ -43,10 +43,10 @@ ActiveRecord::Schema.define(version: 20150411221431) do
   create_table "swimmers", force: :cascade do |t|
     t.integer  "pool_id"
     t.integer  "user_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.datetime "payday_date"
-    t.boolean  "recieved",    default: true
+    t.boolean  "recieved",    default: false
   end
 
   add_index "swimmers", ["pool_id"], name: "index_swimmers_on_pool_id", using: :btree
