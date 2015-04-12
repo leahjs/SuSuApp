@@ -8,6 +8,7 @@ class InvitationsController < ApplicationController
 
   def create
     email = invitation_params[:guest]
+    # binding.pry
     @user = User.find_by(email: email)
     if @user.nil?
       @user = User.create_and_send_email(email)
