@@ -1,6 +1,6 @@
 <h1><%= @user.first_name %></h1>
 <% unless @user.credibility.nil? %>
- <h2><%= @user.name %>'s credibility is <%= @user.credibility %></h2>
+ <h2><%= @user.first_name %>'s credibility is <%= @user.credibility %></h2>
 <% else %>
   <%= image_tag @user.profile_photo %>
   <h2><%= @user.first_name %> doesn't have credibilty yet.</h2>
