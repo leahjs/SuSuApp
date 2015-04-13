@@ -21,4 +21,7 @@ class User < ActiveRecord::Base
     end
   end
 
+  def assign_credibilty
+
+  end
 end

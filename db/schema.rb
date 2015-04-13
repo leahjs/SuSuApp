@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150412155454) do
+ActiveRecord::Schema.define(version: 20150413005143) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20150412155454) do
     t.datetime "updated_at",                  null: false
     t.datetime "payday_date"
     t.boolean  "recieved",    default: false
+    t.date     "paydate"
   end
 
   add_index "swimmers", ["pool_id"], name: "index_swimmers_on_pool_id", using: :btree

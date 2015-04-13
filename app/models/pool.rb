@@ -21,9 +21,15 @@ class Pool < ActiveRecord::Base
   end
 
   def set_reciever
-    new_reciever = self.swimmers.where(recieved: false).first
-    self.reciever_id = new_reciever.id
-    new_reciever.update(recieved: true)
+    if self.swimmers.all? {|swimmer| swimmer.recieved == true}
+      self.update(status: 'closed')
+      self.update_credibility
+    else
+      new_reciever = self.swimmers.where(recieved: false).first
+      self.reciever_id = new_reciever.user_id
+      new_reciever.update(paydate: Date.today)
+      new_reciever.update(recieved: true)
+    end
   end
 
   def lifeguard_goes_last
@@ -33,10 +39,10 @@ class Pool < ActiveRecord::Base
   def liferaft_amount
   end
 
-  def self.update_credibility
-    self.where(status: "closed").each do |pool|
-      pool.users
+  def update_credibility
+    self.users.each do |user|
       binding.pry
+      user.assign_credibility
     end
   end
 end
