@@ -1,33 +1,59 @@
-<h2><%= @pool.name %></h2>
-<div class="signout_button"><%= link_to "Sign out", "/signout"%></div><br/>
 
-<h4>Pool Amount: $<%= @pool.pool_amount %></h4>
-<h5><%= @pool.lifeguard.first_name %> is the lifeguard for this pool.</h5>
-<%= image_tag @pool.lifeguard.profile_photo %>
+<div class="row mt">
+      <div class="col-md-12">
+      <div class="content-panel">
+      <h4>Pool Name: <%= @pool.name %></h4>
+      <h4>Pool Amount: $<%= @pool.pool_amount %></h4>
+      <div class="invite-user">
+      <% if current_user.id == @pool.lifeguard_id %>
+              <%= form_for(@pool.invitations.build, :url => "/invitations/create", :html => {:method => :post}) do |f| %>
+               <div class="field-other">
+                 <%= f.label(:guest) %>
+                 <%= f.text_field :guest%><br/>
+                 <%= hidden_field_tag("invitation[pool_id]", value = @pool.id) %>
+               </div>
 
-<h3>Swimmers:</h3>
-<% @pool.swimmers.each do |swimmer| %>
-  <h4><%= link_to User.find_by(id: swimmer.user_id).first_name, user_path(User.find_by(id: swimmer.user_id)) %></h4>
-<%end%><br>
+               <div class="actions-other">
+                 <%= f.submit "Invite User" %>
+               </div>
+              <% end %>
+      <%elsif @pool.swimmers.pluck('user_id').include?(current_user.id)%>
+        <h5>Welcome back <%=current_user.first_name%>!</h5>
+      <%else%>
+        <%= link_to "Accept Invitation", invitations_accept_path(pool_id:@pool.id, invitation_id: params['invitation_id']) %>
+        <%= link_to "Decline Invitation", invitations_decline_path(pool_id: @pool.id, invitation_id: params['invitation_id']) %>
+     <%end%>
+     </div>
+     <br/>
 
 
-<% if current_user.id == @pool.lifeguard_id %>
-<%= form_for(@pool.invitations.build, :url => "/invitations/create", :html => {:method => :post}) do |f| %>
- <div class="field">
-   <%= f.label(:guest) %>
-   <%= f.text_field :guest%><br/>
-   <%= hidden_field_tag("invitation[pool_id]", value = @pool.id) %>
- </div>
+      <table class="table table-striped table-advance table-hover">
+      <thead>
+      <tr>
+      <th> Swimmer</th>
+      <th> Credibility</th>
+      <th> Status</th>
+      <th> Reciever</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @pool.swimmers.each do |swimmer| %>
+        <tr>
+        <td><%= link_to fullname(User.find_by(id: swimmer.user_id).first_name, User.find_by(id: swimmer.user_id).last_name), user_path(User.find_by(id: swimmer.user_id)) %></td>
+        <td><%= link_to User.find_by(id: swimmer.user_id).credibility, user_path(User.find_by(id: swimmer.user_id)) %></td>
+          <% if swimmer.user_id == @pool.lifeguard.id %>
+          <td><span class="label label-info label-mini">Lifeguard</span></td>
+          <% else %>
+          <td><span class="label label-warning label-mini">Swimmer</span></td>
+          <% end %>
+        <!-- START NEED IF STATEMENT FOR IF RECEIVER-->
+        <td><span class="label label-success label-mini">✔</span></td>
+        <!-- END NEED IF STATEMENT FOR IF RECEIVER-->
+        </tr>
+      <%end%>
 
- <div class="actions">
-   <%= f.submit "Invite User" %>
- </div>
-<% end %>
-<%elsif @pool.swimmers.pluck('user_id').include?(current_user.id)%>
-  <h5>Welcome back <%=current_user.first_name%>!</h5>
-<%else%>
-  <%= link_to "Accept Invitation", invitations_accept_path(pool_id:@pool.id, invitation_id: params['invitation_id']) %>
-  <%= link_to "Decline Invitation", invitations_decline_path(pool_id: @pool.id, invitation_id: params['invitation_id']) %>
-<%end%>
-
-  <div class="home_button"><%= link_to "My Profile", "/profile"%></div><br/>
+      </tbody>
+      </table>
+      </div><!-- /content-panel -->
+      </div><!-- /col-md-12 -->
+</div>

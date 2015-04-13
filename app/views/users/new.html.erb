@@ -5,29 +5,53 @@
 
 <% if current_user %>
   <h3><%= "Welcome, #{current_user.first_name}!" %></h3>
-  <%= image_tag current_user.profile_photo %>
-  <div class="signout_button"><%= link_to "Sign out", "/signout"%></div><br/>
   <h3><%= notice %></h3><br>
-  <h3>My Pool(s)</h3>
+
   <% unless current_user.pools.empty? %>
     <% current_user.pools.each do |pool|%>
-      <h3><%=link_to pool.name, pool_path(pool) %></h3><br/>
+         <div class="row">
+            <div class="col-md-12">
+            <div class="content-panel">
+            <h3>Current Pools</h3>
+                <hr>
+                <table class="table">
+                <thead>
+                <tr>
+                <th>#</th>
+                <th>Pool Name</th>
+                <th>Pool Amount</th>
+                <th>Swimmers Count</th>
+                </th>
+                </tr>
+                </thead>
+
+                <tbody>
+
+                  <tr>
+                  <td>1</td>
+                  <td><%= link_to pool.name, pool_path(pool) %></td>
+                  <td><%= link_to pool.pool_amount, pool_path(pool)%></td>
+                  <td><%= link_to pool.swimmers.count, pool_path(pool) %></td>
+                  </tr>
+
+                </tbody>
+                </table>
+            </div><!--content-panel -->
+            </div><!-- /col-md-12 -->
+         </div>
     <% end %>
-  <% else %>
-    <%= "You are not apart of any current pools!" %>
   <% end %>
 
+
+<!-- THIS IF HAVE INVITATIONS NEEDS IT's OWN VIEW PAGE -->
   <% if @open_invitations.any?%>
     <% @open_invitations.each do |invitation| %>
-
     <h3>You have been invited to <%= link_to invitation.pool.name, pool_path(invitation.pool, invitation_id: invitation.id) %></h3>
-
-      <%end%>
+    <%end%>
   <%else%>
     <h3>You don't have any current invitations.</h3>
   <%end%>
-
-  <h4><%= link_to "Create Pool", "/createpool"%></h4>
+<!-- THIS IF HAVE INVITATIONS NEEDS IT's OWN VIEW PAGE -->
 
 
 <% end %>
