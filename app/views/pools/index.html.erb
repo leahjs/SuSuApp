@@ -1,2 +1,45 @@
-<h1>Pools#index</h1>
-<p>Find me in app/views/pools/index.html.erb</p>
+<% if !current_user %>
+  <div class="welcome"><h1>Welcome to the Susu App!</h1></div>
+    <% end %>
+
+
+<% if current_user %>
+  <h3>My Pool(s)</h3>
+  <% unless current_user.pools.empty? %>
+    <% current_user.pools.each do |pool|%>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="content-panel">
+                    <h3><%=link_to pool.name, pool_path(pool) %></h3>
+                    <hr>
+                  <table class="table">
+                      <thead>
+                      <tr>
+                          <th>#</th>
+                          <th>First Name</th>
+                          <th>Last Name</th>
+                          <th>Credibility</th>
+                          </th>
+                      </tr>
+                      </thead>
+
+                      <tbody>
+                      <% pool.swimmers.each do |swimmer| %>
+                          <tr>
+                          <td>1</td>
+                          <td><%= link_to fullname(User.find_by(id: swimmer.user_id).first_name, User.find_by(id: swimmer.user_id).last_name), user_path(User.find_by(id: swimmer.user_id)) %></td>
+                          <td><%= link_to User.find_by(id: swimmer.user_id).last_name, user_path(User.find_by(id: swimmer.user_id)) %></td>
+                          <td><%= link_to User.find_by(id: swimmer.user_id).credibility, user_path(User.find_by(id: swimmer.user_id)) %></td>
+                          </tr>
+                      <%end%>
+                      </tbody>
+                  </table>
+                </div><! --/content-panel -->
+            </div><!-- /col-md-12 -->
+    </div>
+    <% end %>
+  <% else %>
+    <%= "You are not apart of any current pools!" %>
+  <% end %>
+
+  <% end %>
