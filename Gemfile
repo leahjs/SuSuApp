@@ -21,6 +21,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'omniauth-venmo'
 gem 'omniauth-twitter'
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 gem 'omniauth'
 gem 'omniauth-splitwise'
