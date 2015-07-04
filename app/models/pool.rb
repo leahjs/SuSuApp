@@ -45,4 +45,15 @@ class Pool < ActiveRecord::Base
       user.assign_credibility
     end
   end
+
+  def self.plan
+    if pool_amount > 500
+      plan: 1001
+    elsif pool_amount > 301 && pool_amount < 499
+      plan: 5050
+    elsif pool_amount > 51 && pool_amount < 300 
+      plan: 2020
+    else
+      plan: 1010
+  end
 end
